@@ -35,14 +35,19 @@ jobs:
           sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
 
-      - name: Build Docker Compose services
-        run: docker-compose -f docker-compose.ci.build.yml build
+      - name: Run Docker Compose services
+        run: |
+            docker-compose -f docker-compose.ci.build.yml up
   
+        # Build services
       - name: Build Docker Compose services
-        run: docker-compose -f docker-compose.yml build
-
+        run: |
+            docker-compose -f docker-compose.yml build --build-arg DOCKER_BUILD_SOURCE=
+  
+        # Tag and push images
       - name: Push Docker Images
-        run: docker-compose -f docker-compose.yml push
+        run: |
+          docker-compose -f docker-compose.yml push
 
       - name: Copy deployment files
         run: |
