@@ -36,6 +36,9 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
 
       - name: Build Docker Compose services
+        run: docker-compose -f docker-compose.ci.build.yml build
+  
+      - name: Build Docker Compose services
         run: docker-compose -f docker-compose.yml build
 
       - name: Push Docker Images
