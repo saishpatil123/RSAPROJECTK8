@@ -9,7 +9,7 @@ module "sql_server" {
   depends_on = [ module.resource_group ]
   sql_server_name= var.sql_server_name
   resource_group_name = module.resource_group.resource_group_name
-  location = "westus" #module.resource_group.location
+  location = "westus"
 }
 
 module "sql-db" {
