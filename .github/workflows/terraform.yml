@@ -32,18 +32,18 @@ jobs:
         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init with backend config
-      run: |
-        terraform init \
-        -backend-config="resource_group_name=my-rg" \
-        -backend-config="storage_account_name=mystorage" \
-        -backend-config="container_name=tfstate" \
-        -backend-config="key=dev.terraform.tfstate"
+    # - name: Terraform Init with backend config
+    #   run: |
+    #     terraform init \
+    #     -backend-config="resource_group_name=my-rg" \
+    #     -backend-config="storage_account_name=mystorage" \
+    #     -backend-config="container_name=tfstate" \
+    #     -backend-config="key=dev.terraform.tfstate"
 
   
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -var-file="dev.tfvars"
+      run: terraform plan -var-file="Terraform/dev.tfvars"
 
       # On push to "master", build or change infrastructure according to Terraform configuration files
       
