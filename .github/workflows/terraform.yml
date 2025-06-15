@@ -43,18 +43,15 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Init with backend config
-        run: terraform init
-        # Uncomment and update if using backend config
-        # run: |
-        #   terraform init \
-        #     -backend-config="resource_group_name=my-rg" \
-        #     -backend-config="storage_account_name=mystorage" \
-        #     -backend-config="container_name=tfstate" \
-        #     -backend-config="key=dev.terraform.tfstate"
+        run: |
+          terraform init \
+            -backend-config="resource_group_name=storageaccount" \
+            -backend-config="storage_account_name=terraformstatejb" \
+            -backend-config="container_name=tfstate" \
+            -backend-config="key=dev.terraform.tfstate"
 
       - name: Terraform Plan
         run: terraform plan -var-file="dev.tfvars"
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -var-file="dev.tfvars" -auto-approve
