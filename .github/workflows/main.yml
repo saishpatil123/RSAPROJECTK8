@@ -7,6 +7,10 @@ on:
     paths-ignore:
       - 'Terraform/**'
   workflow_dispatch:
+    
+permissions:
+  id-token: write
+  contents: read
 
 env:
   IMAGE_TAG: ${{ github.run_number }}
