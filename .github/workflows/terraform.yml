@@ -23,7 +23,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: Terraform  # 👈 Set working directory for all steps
+        working-directory: Terraform 
 
     steps:
       - name: Checkout
