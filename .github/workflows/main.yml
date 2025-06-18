@@ -92,4 +92,4 @@ jobs:
           cluster-name: aks-demo-cluster
 
       - name: Apply Kubernetes manifests
-        run: kubectl apply -f ./deploy-files/mhc-aks.yaml
+        run: kubectl apply -f mhc-aks.yaml
