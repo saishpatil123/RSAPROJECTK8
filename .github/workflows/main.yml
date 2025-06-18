@@ -57,8 +57,9 @@ jobs:
         run: |
           mkdir -p artifacts
           cp **/mhc-aks.yaml artifacts/ || true
-          find . -name '*.dacpac' -exec cp {} artifacts/ \;
-
+          find . -name '*.dacpac' 
+          find . -name 'mhc-aks.yaml' -exec cp {} artifacts/ \;
+          
       - name: Upload deployment artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -92,4 +93,4 @@ jobs:
           cluster-name: aks-demo-cluster
 
       - name: Apply Kubernetes manifests
-        run: kubectl apply -f mhc-aks.yaml
+        run: kubectl apply -f ./deploy-files/mhc-aks.yaml
