@@ -88,8 +88,8 @@ jobs:
       - name: Set AKS context
         uses: azure/aks-set-context@v3
         with:
-          resource-group: akshandsonlab
-          cluster-name: aks_cluster
+          resource-group: demo
+          cluster-name: aks-demo-cluster
 
       - name: Apply Kubernetes manifests
         run: kubectl apply -f ./deploy-files/mhc-aks.yaml
