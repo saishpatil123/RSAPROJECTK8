@@ -56,8 +56,6 @@ jobs:
       - name: Copy deployment files
         run: |
           mkdir -p artifacts
-          cp **/mhc-aks.yaml artifacts/ || true
-          find . -name '*.dacpac' 
           find . -name 'mhc-aks.yaml' -exec cp {} artifacts/ \;
           
       - name: Upload deployment artifacts
