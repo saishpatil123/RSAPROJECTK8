@@ -2,7 +2,7 @@ version: '2'
 
 services:
   myhealth.web:
-    image: saishpatil18
+    image: saishpatil18/myhealth.web
     build:
       context: ./src/MyHealth.Web
       dockerfile: Dockerfile
